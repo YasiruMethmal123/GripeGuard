@@ -10,6 +10,7 @@ from tensorboard.compat.tensorflow_stub.io.gfile import exists
 
 
 def load_and_preprocess_data(test_size = 0.2 , random_state = 42):
+
     file_path = "../resources/ConsumerComplaints.csv"  # Adjust to match exact filename
     print("Current working directory:", os.getcwd())
     abs_path = os.path.abspath(file_path)
@@ -19,6 +20,9 @@ def load_and_preprocess_data(test_size = 0.2 , random_state = 42):
     data = pd.read_csv(abs_path)
     print("File loaded successfully. First few rows:")
     print(data.head())
+
+    
+
     return data
 
 
