@@ -21,9 +21,12 @@ def load_and_preprocess_data(test_size = 0.2 , random_state = 42):
     print("File loaded successfully. First few rows:")
     print(data.head())
 
-    
+    features = ['Submitted via' , 'Product']
+    targets = ['Issue' , 'Company response to consumer']
 
-    return data
+    # data[features] = data[features].fillna({''})
 
+    X = data[features]
+    y = data[targets]
+    X_train , X_test , y_train , y_test = train_test_split(X , y , test_size = test_size,random_state=random_state)
 
-load_and_preprocess_data()
