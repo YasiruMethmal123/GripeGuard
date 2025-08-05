@@ -21,12 +21,24 @@ def load_and_preprocess_data(test_size = 0.2 , random_state = 42):
     print("File loaded successfully. First few rows:")
     print(data.head())
 
-    features = ['Submitted via' , 'Product']
-    targets = ['Issue' , 'Company response to consumer']
+    features = data[['Submitted via', 'State', 'Product', 'Sub-product', 'Issue', 'Sub-issue', 'Company public response',
+              'Timely response?', 'Days between']]
+    targets = data['Company response to consumer']
 
-    # data[features] = data[features].fillna({''})
+    categorical_cols = ['Submitted via', 'State', 'Product', 'Sub-product', 'Issue', 'Sub-issue',
+                        'Company public response', 'Timely response?']
+    numeric_cols = ['Days between']
 
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ('num' , StandardScaler(),numeric_cols),
+            ('cat' , OneHotEncoder(drop='first' , sparse_output =False))
+        ]
+    )
     X = data[features]
     y = data[targets]
-    X_train , X_test , y_train , y_test = train_test_split(X , y , test_size = test_size,random_state=random_state)
+
+    X_processed = preprocessor.fit_transform(X)
+    X_train , X_test , y_train , y_test = train_test_split(X_processed , y , test_size = test_size,random_state=random_state)
+
 
