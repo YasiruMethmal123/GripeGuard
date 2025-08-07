@@ -11,7 +11,7 @@ def build_model(vocab_size, embedding_dim, max_length, num_classes):
     print("\nBuilding deep learning model....")
     model = Sequential({
         Embedding(vocab_size , embedding_dim , input_length= max_length),
-        GlobalAveragePooling1D()
+        GlobalAveragePooling1D(),
         Dense(24 , activation='relu'),
         Dense(num_classes , activation='softmax')
     })
