@@ -1,7 +1,6 @@
 from keras.src.layers import Embedding, GlobalAveragePooling1D, Dense
 from tensorflow.python.keras.models import Sequential
 
-
 def build_model(vocab_size, embedding_dim, max_length, num_classes):
     """
     Builds the deep learning model. This function would be in a file like
