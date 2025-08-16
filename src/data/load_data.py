@@ -9,7 +9,7 @@ import os
 from tensorboard.compat.tensorflow_stub.io.gfile import exists
 
 
-def load_and_preprocess_data(test_size = 0.2 , random_state = 42 ,update_original=False):
+def load_data(test_size = 0.2 , random_state = 42 ,update_original=False):
     """
     Loads and preprocesses the data. In a real project, this function
     would likely be in a separate file like `src/utils/data_loader.py`.
